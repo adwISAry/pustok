@@ -9,8 +9,9 @@ namespace pustok.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
+            optionsBuilder.UseSqlServer(@"Server= DESKTOP-R4EGFJU\SQLEXPRESS ;Database = Pustokdb; Trusted_Connection=true");
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R4EGFJU\SQLEXPRESS;Database = Pustokdb;Trusted_Connection=true");
         }
     }
 }

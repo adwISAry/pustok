@@ -1,22 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using pustok.Models;
+using Microsoft.EntityFrameworkCore;
+using pustok.Context;
 using System.Diagnostics;
 
 namespace pustok.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public async Task<IActionResult> Index()
         {
-            _logger = logger;
-        }
+            using ApplicationDbContext context = new ApplicationDbContext();
+            var sliders = await context.Sliders.ToListAsync();
 
-        public IActionResult Index()
-        {
-            return View();
+            return View(sliders);
         }
-
     }
 }
